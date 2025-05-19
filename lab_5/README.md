@@ -17,6 +17,18 @@
 
 # Примеры использования проекта с приложением скриншотов или фрагментов кода
 
+### Задание №1
+
+![image](https://github.com/user-attachments/assets/612bcedf-d311-4ab2-a773-4c6e54c5f392)
+![image](https://github.com/user-attachments/assets/1ff9584b-3f74-417c-86ce-5d61708a74ee)
+![image](https://github.com/user-attachments/assets/d6adaad8-6280-478d-9d8f-6671a81db303)
+
+### Задание №2
+
+![image](https://github.com/user-attachments/assets/88a5fdbd-4441-4663-a505-0b0e0d66777c)
+![image](https://github.com/user-attachments/assets/9bbef326-6a04-4c26-90ef-9c8273aae896)
+![image](https://github.com/user-attachments/assets/892bba10-5dd4-4f08-bf2a-a34e54791819)
+
 # Ответы на контрольные вопросы
 
 1. Объясните, что такое глобальные переменные `$_POST` и `$_SERVER["PHP_SELF"]`:
