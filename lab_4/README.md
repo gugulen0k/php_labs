@@ -16,9 +16,16 @@
 
 По пути `localhost:8000` можно ознакомиться с выполненными заданиями 1, 2, 3 и 4.
 
-В свою очередь путь `localhost:8000/dogs.php` содержит простенький сайт о собаках.
+В свою очередь путь `localhost:8000/dogs.php` содержит простенький сайт о собаках (задание №5).
 
 # Примеры использования проекта с приложением скриншотов или фрагментов кода
+
+![image](https://github.com/user-attachments/assets/85e190ce-f6ad-45b8-964b-e355c38d30d6)
+![image](https://github.com/user-attachments/assets/31e055d8-676c-4366-8e5a-67d78f20a992)
+![image](https://github.com/user-attachments/assets/f0d5aa5b-d256-4ed8-89b5-403ac5c361bf)
+![image](https://github.com/user-attachments/assets/a0e87c69-45c0-47e6-842e-a79dd7a793bf)
+![image](https://github.com/user-attachments/assets/b3ff6c7e-28d2-4f43-a06d-964022688505)
+
 
 # Ответы на контрольные вопросы
 
