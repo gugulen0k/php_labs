@@ -1,0 +1,52 @@
+<div class="form">
+  <form action="/contact" method="POST">
+    <fieldset>
+      <legend>Контактная форма</legend>
+      
+      <div>
+        <label for="name">Имя:</label>
+        <input type="text" name="name" id="name" value="<%= @name %>">
+      </div>
+
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" value="<%= @email %>">
+      </div>
+
+      <div>
+        <label for="comment">Комментарий:</label>
+        <textarea name="comment" id="comment" rows="5"><%= @comment %></textarea>
+      </div>
+
+      <div>
+        <label>
+          <input type="checkbox" name="agree" <%= @agree == "on" ? "checked" : "" %>>
+          Согласны ли вы на обработку данных?
+        </label>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <input type="submit" value="Отправить">
+      </div>
+    </fieldset>
+  </form>
+
+  <% if @errors && !@errors.empty? %>
+    <div class="error" style="margin-top: 20px;">
+      <ul>
+        <% @errors.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @form_submitted && @errors.empty? %>
+    <div class="success">
+      <h3>Форма успешно отправлена!</h3>
+      <p>Имя: <b><%= @name %></b></p>
+      <p>Email: <b><%= @email %></b></p>
+      <p>Комментарий: <b><%= @comment %></b></p>
+    </div>
+  <% end %>
+</div> 

@@ -1,0 +1,65 @@
+<div class="form">
+
+  <form action="/review" method="POST">
+    <fieldset>
+      <legend>Оставьте отзыв!</legend>
+      <div id="main_info" style="display: flex; flex-direction: column; gap: 10px;">
+        <div>
+          <label for="name">Имя:
+            <input type="text" name="name" value="<%= @name %>"/>
+          </label>
+        </div>
+        <div>
+          <label for="email">Email:
+            <input type="email" name="email" value="<%= @email %>"/>
+          </label>
+        </div>
+      </div>
+      <div id="extra_info">
+        <div>
+          <p><label for="review">Оцените наш сервис!</label></p>
+          <div style="display: flex; flex-direction: column;">
+            <p><input type="radio" name="review" value="10" <%= @review == "10" ? "checked" : "" %>>Хорошо</p>
+            <p><input type="radio" name="review" value="8" <%= @review == "8" ? "checked" : "" %>>Удовлетворительно</p>
+            <p><input type="radio" name="review" value="5" <%= @review == "5" ? "checked" : "" %>>Плохо</p>
+          </div>
+        </div>
+      </div>
+      <div id="message_info">
+        <div>
+          <p><label for="comment">Ваш комментарий: </label></p>
+          <textarea id="comment" name="comment" cols="30" rows="10" class="comment"><%= @comment %></textarea>
+        </div>
+      </div>
+      <div id="buttons" style="display: flex; flex-direction: row; gap: 10px; margin-top: 10px;">
+        <input type="submit" value="Отправить"/>
+        <input type="reset" value="Удалить"/>
+      </div>
+    </fieldset>
+  </form>
+
+  <% if @errors && !@errors.empty? %>
+    <div class="error">
+      <ul>
+        <% @errors.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @form_submitted && @errors.empty? %>
+    <div id="result" class="success">
+      <p>Ваше имя: <b><%= @name %></b></p>
+      <p>Ваш e-mail: <b><%= @email %></b></p>
+      <p>Оценка товара: <b>
+        <% case @review 
+           when "10" %> Хорошо
+        <% when "8" %> Удовлетворительно
+        <% when "5" %> Плохо
+        <% end %>
+      </b></p>
+      <p>Ваше сообщение: <b><%= @comment %></b></p>
+    </div>
+  <% end %>
+</div> 

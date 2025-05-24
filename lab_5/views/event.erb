@@ -1,0 +1,83 @@
+<div class="form">
+  <form action="/event" method="POST">
+    <fieldset>
+      <legend>Регистрация на мероприятие</legend>
+      
+      <div>
+        <label for="name">Имя участника:</label>
+        <input type="text" name="name" id="name" value="<%= @data&.dig('name') %>">
+      </div>
+
+      <div>
+        <label for="age">Возраст:</label>
+        <input type="number" name="age" id="age" min="18" max="100" value="<%= @data&.dig('age') %>">
+      </div>
+
+      <div>
+        <label for="event_type">Тип участия:</label>
+        <select name="event_type" id="event_type">
+          <option value="">Выберите тип участия</option>
+          <option value="speaker" <%= @data&.dig('event_type') == 'speaker' ? 'selected' : '' %>>Спикер</option>
+          <option value="listener" <%= @data&.dig('event_type') == 'listener' ? 'selected' : '' %>>Слушатель</option>
+          <option value="organizer" <%= @data&.dig('event_type') == 'organizer' ? 'selected' : '' %>>Организатор</option>
+        </select>
+      </div>
+
+      <div>
+        <p>Формат участия:</p>
+        <label>
+          <input type="radio" name="format" value="online" <%= @data&.dig('format') == 'online' ? 'checked' : '' %>>
+          Онлайн
+        </label>
+        <label>
+          <input type="radio" name="format" value="offline" <%= @data&.dig('format') == 'offline' ? 'checked' : '' %>>
+          Оффлайн
+        </label>
+      </div>
+
+      <div>
+        <p>Дополнительные опции:</p>
+        <label>
+          <input type="checkbox" name="options[]" value="coffee" <%= @data&.dig('options')&.include?('coffee') ? 'checked' : '' %>>
+          Кофе-брейк
+        </label>
+        <label>
+          <input type="checkbox" name="options[]" value="certificate" <%= @data&.dig('options')&.include?('certificate') ? 'checked' : '' %>>
+          Сертификат участника
+        </label>
+        <label>
+          <input type="checkbox" name="options[]" value="materials" <%= @data&.dig('options')&.include?('materials') ? 'checked' : '' %>>
+          Материалы мероприятия
+        </label>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <input type="submit" value="Зарегистрироваться">
+      </div>
+    </fieldset>
+  </form>
+
+  <% if @form_submitted %>
+    <div class="success">
+      <h3>Данные регистрации:</h3>
+      <p>Имя: <b><%= @data['name'] %></b></p>
+      <p>Возраст: <b><%= @data['age'] %></b></p>
+      <p>Тип участия: <b>
+        <% case @data['event_type'] 
+           when 'speaker' %> Спикер
+        <% when 'listener' %> Слушатель
+        <% when 'organizer' %> Организатор
+        <% end %>
+      </b></p>
+      <p>Формат: <b><%= @data['format'] == 'online' ? 'Онлайн' : 'Оффлайн' %></b></p>
+      <p>Дополнительные опции: <b>
+        <% options_text = []
+           options_text << "Кофе-брейк" if @data['options']&.include?('coffee')
+           options_text << "Сертификат участника" if @data['options']&.include?('certificate')
+           options_text << "Материалы мероприятия" if @data['options']&.include?('materials')
+        %>
+        <%= options_text.join(', ') %>
+      </b></p>
+    </div>
+  <% end %>
+</div> 

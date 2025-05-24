@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Handling in Ruby</title>
+  <style>
+    :root {
+      --primary: rgb(201, 104, 104);
+      --secondary: rgb(250, 223, 161);
+      --background: rgb(255, 244, 234);
+      --accent: rgb(126, 172, 181);
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: var(--background);
+      color: #333;
+    }
+
+    .form {
+      margin: 20px 0;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    fieldset {
+      border: 2px solid var(--accent);
+      padding: 20px;
+      margin: 10px 0;
+      border-radius: 6px;
+      background-color: white;
+    }
+
+    legend {
+      background-color: var(--accent);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .error {
+      color: var(--primary);
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid var(--primary);
+      border-radius: 4px;
+      background-color: rgba(201, 104, 104, 0.1);
+    }
+
+    .success {
+      color: var(--accent);
+      margin: 10px 0;
+      padding: 15px;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      background-color: white;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      box-sizing: border-box;
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="number"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      background-color: var(--accent);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover,
+    input[type="reset"]:hover {
+      background-color: rgb(106, 152, 161);
+    }
+
+    input[type="reset"] {
+      background-color: var(--primary);
+    }
+
+    input[type="reset"]:hover {
+      background-color: rgb(181, 94, 94);
+    }
+
+    .nav {
+      margin-bottom: 30px;
+      padding: 15px;
+      background-color: var(--secondary);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .nav a {
+      margin-right: 15px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+
+    .nav a:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    label {
+      color: #555;
+      font-weight: 500;
+    }
+
+    .question {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: rgba(250, 223, 161, 0.2);
+      border-radius: 4px;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    input[type="radio"] + label,
+    input[type="checkbox"] + label {
+      margin-left: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a href="/review">Форма отзыва</a>
+    <a href="/event">Регистрация на мероприятие</a>
+    <a href="/contact">Контактная форма</a>
+    <a href="/quiz">Тест</a>
+  </div>
+  
+  <%= yield %>
+</body>
+</html> 

@@ -1,0 +1,102 @@
+<div class="form">
+  <form action="/quiz" method="POST">
+    <fieldset>
+      <legend>Тестирование по программированию</legend>
+      
+      <div>
+        <label for="username">Ваше имя:</label>
+        <input type="text" name="username" id="username" value="<%= @username %>">
+      </div>
+
+      <div class="question">
+        <p><strong>Вопрос 1:</strong> Что такое Ruby?</p>
+        <label>
+          <input type="radio" name="q1" value="a" <%= @answers&.dig(:q1) == 'a' ? 'checked' : '' %>>
+          Язык программирования
+        </label><br>
+        <label>
+          <input type="radio" name="q1" value="b" <%= @answers&.dig(:q1) == 'b' ? 'checked' : '' %>>
+          Драгоценный камень
+        </label><br>
+        <label>
+          <input type="radio" name="q1" value="c" <%= @answers&.dig(:q1) == 'c' ? 'checked' : '' %>>
+          Оба варианта верны
+        </label>
+      </div>
+
+      <div class="question">
+        <p><strong>Вопрос 2:</strong> Какие из этих фреймворков написаны на Ruby? (Выберите все подходящие)</p>
+        <label>
+          <input type="checkbox" name="q2[]" value="rails" <%= @answers&.dig(:q2)&.include?('rails') ? 'checked' : '' %>>
+          Ruby on Rails
+        </label><br>
+        <label>
+          <input type="checkbox" name="q2[]" value="sinatra" <%= @answers&.dig(:q2)&.include?('sinatra') ? 'checked' : '' %>>
+          Sinatra
+        </label><br>
+        <label>
+          <input type="checkbox" name="q2[]" value="django" <%= @answers&.dig(:q2)&.include?('django') ? 'checked' : '' %>>
+          Django
+        </label>
+      </div>
+
+      <div class="question">
+        <p><strong>Вопрос 3:</strong> Какое расширение у файлов Ruby?</p>
+        <label>
+          <input type="radio" name="q3" value="rb" <%= @answers&.dig(:q3) == 'rb' ? 'checked' : '' %>>
+          .rb
+        </label><br>
+        <label>
+          <input type="radio" name="q3" value="ruby" <%= @answers&.dig(:q3) == 'ruby' ? 'checked' : '' %>>
+          .ruby
+        </label><br>
+        <label>
+          <input type="radio" name="q3" value="ru" <%= @answers&.dig(:q3) == 'ru' ? 'checked' : '' %>>
+          .ru
+        </label>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <input type="submit" value="Отправить">
+      </div>
+    </fieldset>
+  </form>
+
+  <% if @errors && !@errors.empty? %>
+    <div class="error" style="margin-top: 20px;">
+      <ul>
+        <% @errors.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @form_submitted && @errors.empty? %>
+    <div class="success">
+      <h3>Результаты теста для <%= @username %></h3>
+      <p>Вопрос 1: <b>
+        <% case @answers[:q1]
+           when 'a' %> Язык программирования
+        <% when 'b' %> Драгоценный камень
+        <% when 'c' %> Оба варианта верны
+        <% end %>
+      </b></p>
+      <p>Вопрос 2: <b>
+        <% frameworks = []
+           frameworks << "Ruby on Rails" if @answers[:q2]&.include?('rails')
+           frameworks << "Sinatra" if @answers[:q2]&.include?('sinatra')
+           frameworks << "Django" if @answers[:q2]&.include?('django')
+        %>
+        <%= frameworks.join(', ') %>
+      </b></p>
+      <p>Вопрос 3: <b>
+        <% case @answers[:q3]
+           when 'rb' %> .rb
+        <% when 'ruby' %> .ruby
+        <% when 'ru' %> .ru
+        <% end %>
+      </b></p>
+    </div>
+  <% end %>
+</div> 

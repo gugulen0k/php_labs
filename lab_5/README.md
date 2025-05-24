@@ -1,47 +1,163 @@
-# Инструкции по запуску проекта
+# Лабораторная работа №5 - Обработка форм
 
-1. Необходимо установить PHP локально.
-2. Выполнить нижеприведенную команду в терминале
+## Инструкции по запуску проекта
+
+1. Убедитесь, что у вас установлены:
+   - Ruby версии 3.0 или выше
+   - Bundler (менеджер пакетов Ruby)
+
+2. Установка и запуск:
+   ```bash
+   # Перейти в директорию проекта
+   cd lab_5
+   
+   # Установить зависимости
+   bundle install
+   
+   # Запустить сервер
+   ruby app.rb
    ```
-   php -S localhost:8000
-   ```
 
-# Описание лабораторной работы
+3. Откройте браузер и перейдите по адресу: `http://localhost:4567`
 
-В данной лабораторной работы были выполнены задания связанные с обработкой и валидацией HTML форм, а так же отображение отправленной через форму информацией.
+## Описание лабораторной работы
 
-# Краткая документация к проекту
+Цель работы: Изучение механизмов обработки веб-форм с использованием Ruby и фреймворка Sinatra, реализация валидации данных и работа с различными типами форм.
 
-По пути `localhost:8000` можно ознакомиться с выполненным заданием №1
-По пути `localhost:8000/index2.php` можно ознакомиться с выполненным заданием №2
+### Реализованные задачи:
 
-# Примеры использования проекта с приложением скриншотов или фрагментов кода
+1. Форма отзыва (`/` или `/review`)
+   - Базовая обработка формы
+   - Валидация email и обязательных полей
+   - Отображение отправленных данных
+   - Обработка ошибок
 
-### Задание №1
+2. Регистрация на мероприятие (`/event`)
+   - Работа с различными типами полей ввода
+   - Сохранение данных при ошибке валидации
+   - Поддержка множественного выбора опций
 
-![image](https://github.com/user-attachments/assets/612bcedf-d311-4ab2-a773-4c6e54c5f392)
-![image](https://github.com/user-attachments/assets/1ff9584b-3f74-417c-86ce-5d61708a74ee)
-![image](https://github.com/user-attachments/assets/d6adaad8-6280-478d-9d8f-6671a81db303)
+3. Контактная форма (`/contact`)
+   - Программная валидация всех полей
+   - Детальные сообщения об ошибках
+   - Проверка формата email с валидацией домена
+   - Валидация длины и содержимого имени (3-20 символов, без цифр)
+   - Валидация длины комментария (10-1000 символов)
+   - Обязательное согласие на обработку данных
 
-### Задание №2
+4. Форма тестирования (`/quiz`)
+   - Мультивопросный тест
+   - Валидация заполнения всех вопросов
 
-![image](https://github.com/user-attachments/assets/88a5fdbd-4441-4663-a505-0b0e0d66777c)
-![image](https://github.com/user-attachments/assets/9bbef326-6a04-4c26-90ef-9c8273aae896)
-![image](https://github.com/user-attachments/assets/892bba10-5dd4-4f08-bf2a-a34e54791819)
+## Скриншоты работы приложения
 
-# Ответы на контрольные вопросы
+### 1. Форма отзыва
+#### Ошибки валидации
+![Ошибки валидации формы отзыва](screenshots/review_errors.png)
 
-1. Объясните, что такое глобальные переменные `$_POST` и `$_SERVER["PHP_SELF"]`:
+#### Успешная отправка
+![Успешная отправка отзыва](screenshots/review_success.png)
 
-   `$_POST` - Это массив, который содержит данные, отправленные на сервер через форму с методом POST (Например: если в форме есть`<input name="email">`, то после отправки его значение будет доступно в `$_POST['email']`).
+### 2. Форма регистрации на мероприятие
+#### Успешная регистрация
+![Успешная регистрация](screenshots/event_success.png)
 
-   `$_SERVER["PHP_SELF"]` - Это путь к текущему выполняемому PHP-скрипту (например, /form.php). Часто используется в атрибуте action формы, чтобы отправить данные на ту же страницу.
+### 3. Контактная форма
+#### Ошибки валидации
+![Ошибки валидации контактной формы](screenshots/contact_errors.png)
+![Длинное имя](screenshots/contact_long_name_error.png)
+![Короткое имя](screenshots/contact_short_name_error.png)
+![Имя содержит цифры](screenshots/contact_numbers_error.png)
+![Длинный комментарий](screenshots/contact_long_comment_error.png)
 
-# Список ипользованных источников
+#### Успешная отправка
+![Успешная отправка контактной формы](screenshots/contact_success.png)
 
-- https://colorhunt.co/palette/222831393e46ffd369eeeeee
-- https://www.w3schools.com/php/php_examples.asp
+### 4. Форма тестирования
+#### Ошибки валидации
+![Ошибки валидации теста](screenshots/quiz_errors.png)
 
-# Дополнительные важные аспекты, если применимо
+#### Результаты теста
+![Результаты теста](screenshots/quiz_success.png)
 
-N/A
+## Краткая документация к проекту
+
+### Структура проекта:
+```
+lab_5/
+├── app.rb              # Основной файл приложения
+├── config.ru           # Конфигурация Rack
+├── Gemfile            # Зависимости проекта
+└── views/             # Шаблоны представлений
+    ├── layout.erb     # Основной шаблон
+    ├── review.erb     # Форма отзыва
+    ├── event.erb      # Форма регистрации
+    ├── contact.erb    # Контактная форма
+    └── quiz.erb       # Форма теста
+```
+
+### Основные компоненты:
+
+1. Класс `FormValidator`:
+```ruby
+class FormValidator
+  def self.validate_name(name)
+    errors = []
+    if name.nil? || name.empty?
+      errors << "Имя обязательно для заполнения"
+    else
+      errors << "Имя должно быть не короче 3 символов" if name.length < 3
+      errors << "Имя должно быть не длиннее 20 символов" if name.length > 20
+      errors << "Имя не должно содержать цифр" if name.match?(/\d/)
+    end
+    errors
+  end
+
+  def self.validate_email(email)
+    errors = []
+    if email.nil? || email.empty?
+      errors << "Email обязателен для заполнения"
+    else
+      begin
+        address = Mail::Address.new(email)
+        unless address.domain && address.address == email
+          errors << "Неверный формат email адреса"
+        end
+        unless address.domain.include?('.')
+          errors << "Неверный формат домена в email адресе"
+        end
+      rescue Mail::Field::ParseError
+        errors << "Неверный формат email адреса"
+      end
+    end
+    errors
+  end
+  # ... другие методы валидации
+end
+```
+
+2. Обработка маршрутов:
+```ruby
+# Пример обработки POST-запроса с валидацией
+post '/contact' do
+  @name = params[:name]
+  @email = params[:email]
+  @comment = params[:comment]
+  @agree = params[:agree]
+  
+  @errors = []
+  @errors.concat(FormValidator.validate_name(@name))
+  @errors.concat(FormValidator.validate_email(@email))
+  @errors.concat(FormValidator.validate_comment(@comment))
+  @errors.concat(FormValidator.validate_agreement(@agree))
+  
+  @form_submitted = true
+  erb :contact
+end
+```
+
+## Список использованных источников
+
+1. [Sinatra Documentation](http://sinatrarb.com/documentation.html)
+2. [Ruby Documentation](https://ruby-doc.org/)
+3. [HTML Forms Guide](https://developer.mozilla.org/en-US/docs/Learn/Forms)
