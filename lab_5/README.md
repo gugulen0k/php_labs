@@ -49,37 +49,6 @@
    - Мультивопросный тест
    - Валидация заполнения всех вопросов
 
-## Скриншоты работы приложения
-
-### 1. Форма отзыва
-#### Ошибки валидации
-![Ошибки валидации формы отзыва](screenshots/review_errors.png)
-
-#### Успешная отправка
-![Успешная отправка отзыва](screenshots/review_success.png)
-
-### 2. Форма регистрации на мероприятие
-#### Успешная регистрация
-![Успешная регистрация](screenshots/event_success.png)
-
-### 3. Контактная форма
-#### Ошибки валидации
-![Ошибки валидации контактной формы](screenshots/contact_errors.png)
-![Длинное имя](screenshots/contact_long_name_error.png)
-![Короткое имя](screenshots/contact_short_name_error.png)
-![Имя содержит цифры](screenshots/contact_numbers_error.png)
-![Длинный комментарий](screenshots/contact_long_comment_error.png)
-
-#### Успешная отправка
-![Успешная отправка контактной формы](screenshots/contact_success.png)
-
-### 4. Форма тестирования
-#### Ошибки валидации
-![Ошибки валидации теста](screenshots/quiz_errors.png)
-
-#### Результаты теста
-![Результаты теста](screenshots/quiz_success.png)
-
 ## Краткая документация к проекту
 
 ### Структура проекта:
@@ -155,6 +124,37 @@ post '/contact' do
   erb :contact
 end
 ```
+
+## Скриншоты работы приложения
+
+### 1. Форма отзыва
+#### Ошибки валидации
+![Ошибки валидации формы отзыва](screenshots/review_errors.png)
+
+#### Успешная отправка
+![Успешная отправка отзыва](screenshots/review_success.png)
+
+### 2. Форма регистрации на мероприятие
+#### Успешная регистрация
+![Успешная регистрация](screenshots/event_success.png)
+
+### 3. Контактная форма
+#### Ошибки валидации
+![Ошибки валидации контактной формы](screenshots/contact_errors.png)
+![Длинное имя](screenshots/contact_long_name_error.png)
+![Короткое имя](screenshots/contact_short_name_error.png)
+![Имя содержит цифры](screenshots/contact_numbers_error.png)
+![Длинный комментарий](screenshots/contact_long_comment_error.png)
+
+#### Успешная отправка
+![Успешная отправка контактной формы](screenshots/contact_success.png)
+
+### 4. Форма тестирования
+#### Ошибки валидации
+![Ошибки валидации теста](screenshots/quiz_errors.png)
+
+#### Результаты теста
+![Результаты теста](screenshots/quiz_success.png)
 
 ## Список использованных источников
 
