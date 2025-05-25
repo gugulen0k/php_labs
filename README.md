@@ -4,3 +4,5 @@
 - [Laboratory #2](./lab_2)
 - [Laboratory #3](./lab_3)
 - [Laboratory #4](./lab_4)
+- [Laboratory #5](./lab_5)
+- [Individual work](./individual_work)
