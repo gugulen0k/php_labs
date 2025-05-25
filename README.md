@@ -5,4 +5,4 @@
 - [Laboratory #3](./lab_3)
 - [Laboratory #4](./lab_4)
 - [Laboratory #5](./lab_5)
-- [Individual work](./individual_work)
+- [Individual work](https://github.com/gugulen0k/php_individual_work.git)
